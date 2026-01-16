@@ -1,7 +1,8 @@
 def init_memory(goal: str) -> dict:
-    return {
+    memory = {
         "goal": goal,
-        "has_responded": False
+        "steps": [],
+        "completed": False
     }
-
-#“Memory will grow later. Today it exists.”
+    print("[MEMORY] Initialized:", memory)
+    return memory

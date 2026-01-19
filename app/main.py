@@ -15,8 +15,17 @@
 
 #Assignment 2
 
-from app.agent import run_agent
+# from app.agent import run_agent
 
+# if __name__ == "__main__":
+#     goal = "Explain inflation in simple terms"
+#     run_agent(goal)
+
+#Monday(19/01/2026)
+
+from app.agent import run_agent
+ 
 if __name__ == "__main__":
-    goal = "Explain inflation in simple terms"
+    goal = "Explain why humor helps in communication"
     run_agent(goal)
+ 

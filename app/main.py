@@ -30,10 +30,21 @@
 #     run_agent(goal)
  
 
+#Wednesday(21/01/2026)- Assignment
+
+# from app.agent import run_agent
+
+# if __name__ == "__main__":
+#     goal = "Briefly explain how stock prices move in simple terms"
+#     run_agent(goal)
+
+
+
 #Wednesday(21/01/2026)
 
 from app.agent import run_agent
-
+ 
 if __name__ == "__main__":
-    goal = "Briefly explain how stock prices move in simple terms"
+    goal = "Explain why humor improves communication"
     run_agent(goal)
+    

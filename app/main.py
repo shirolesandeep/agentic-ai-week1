@@ -3,7 +3,9 @@ from app.planner_agent import planner_step
 from app.executor_agent import executor_step
 
 if __name__ == "__main__":
-    goal = "Explain the Aurangabad college notice in simple words"
+    goal = "Explain the Aurangabad college exam form process, deadlines, and consequences of late submission in simple words."
+    #goal = "Summarize the exam form submission rules and what students should do if they miss the deadline."
+    #goal = "What are the steps, deadlines, and penalties related to exam form submission?"
 
     memory = init_memory(goal)
 

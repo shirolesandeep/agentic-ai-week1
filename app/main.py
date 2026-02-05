@@ -1,19 +1,6 @@
-from app.memory import init_memory
-from app.planner_agent import planner_step
-from app.executor_agent import executor_step
+from app.agent import run_agent
 
 if __name__ == "__main__":
-    goal = "Explain the Aurangabad college exam form process, deadlines, and consequences of late submission in simple words."
-    #goal = "Summarize the exam form submission rules and what students should do if they miss the deadline."
-    #goal = "What are the steps, deadlines, and penalties related to exam form submission?"
+    goal = "Explain why humor improves communication"
+    run_agent(goal)
 
-    memory = init_memory(goal)
-
-    print("\n[MAIN] Starting Multi-Agent System")
-    print("[MAIN] Goal:", goal)
-
-    while not memory["completed"]:
-        plan = planner_step(memory)
-        executor_step(memory, plan)
-
-    print("\n[MAIN] System finished cleanly")

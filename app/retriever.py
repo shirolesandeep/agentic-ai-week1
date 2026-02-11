@@ -1,5 +1,12 @@
-def retrieve_all_knowledge():
-    print("[RETRIEVER] Reading full knowledge file")
+def keyword_retrieval(chunks: list, question: str):
+    print("\n[RETRIEVER] Performing Keyword Search")
 
-    with open("app/knowledge.txt", "r", encoding="utf-8") as f:
-        return f.read()
+    relevant_chunks = []
+
+    for chunk in chunks:
+        for word in question.lower().split():
+            if word in chunk.lower():
+                relevant_chunks.append(chunk)
+                break
+
+    return relevant_chunks

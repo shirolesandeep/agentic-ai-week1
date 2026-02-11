@@ -1,24 +1,42 @@
-from app.retriever import retrieve_all_knowledge
-from app.llm import call_llm
+from app.chunking_strategies import (
+    line_based_chunking,
+    paragraph_based_chunking,
+    fixed_size_chunking,
+    overlapping_chunking
+)
+
+from app.retriever import keyword_retrieval
+
+
+def demo_chunking_and_retrieval():
+    text = open("app/knowledge.txt", encoding="utf-8").read()
+
+    question = "What is the late fee?"
+
+    print("\n==============================")
+    print("QUESTION:", question)
+    print("==============================")
+
+    strategies = {
+        "Line-Based": line_based_chunking(text),
+        "Paragraph-Based": paragraph_based_chunking(text),
+        "Fixed-Size": fixed_size_chunking(text, size=120),
+        "Overlapping": overlapping_chunking(text, size=120, overlap=30),
+    }
+
+    for name, chunks in strategies.items():
+        print(f"\n========== {name} ==========")
+        print(f"Total Chunks: {len(chunks)}")
+
+        relevant = keyword_retrieval(chunks, question)
+
+        print("\nRelevant Chunks:")
+        if relevant:
+            for r in relevant:
+                print("-", r)
+        else:
+            print("No relevant chunk found.")
+
 
 if __name__ == "__main__":
-    goal = "What is the last date of form submission?"
-
-    print("[MAIN] Goal:", goal)
-
-    knowledge = retrieve_all_knowledge()
-
-    full_prompt = f"""
-Use the information below to answer the question.
-
-KNOWLEDGE:
-{knowledge}
-
-QUESTION:
-{goal}
-"""
-
-    answer = call_llm(full_prompt)
-
-    print("\n[FINAL ANSWER]")
-    print(answer)
+    demo_chunking_and_retrieval()
